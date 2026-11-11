@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#101510">
+  <title>Last Light — Ashes on the Road</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="game-shell" aria-label="Last Light zombie survival game">
+    <canvas id="game" aria-label="Game world"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">LL<span>✳</span></span><div><b>LAST LIGHT</b><small>ASHES ON THE ROAD</small></div></div>
+      <div class="top-right"><div class="chapter"><span class="live-dot"></span> CASCADE QUARANTINE ZONE</div><button id="pause-btn" class="icon-btn" aria-label="Pause">Ⅱ</button></div>
+    </header>
+    <section class="hud-left">
+      <div class="mission-card"><div class="eyebrow"><span class="eyebrow-line"></span> CURRENT OBJECTIVE <span id="objective-count" class="objective-count">01 / 03</span></div><h1 id="objective-title">Scavenge the crash site</h1><p id="objective-desc">Find 3 supply caches before sundown.</p><div class="progress-track"><i id="objective-progress"></i></div></div>
+      <div class="status-row"><div class="health-wrap"><div class="status-label">VITALS <span id="health-value">100</span></div><div class="health-track"><i id="health-fill"></i></div></div><div class="infected-counter"><span class="skull">✦</span><div><b id="kills">0</b><small>INFECTED</small></div></div></div>
+      <div class="radio-caption" id="radio-caption"><span>▰</span> RADIO // LOST SIGNAL</div>
+    </section>
+    <section class="hud-right"><div class="minimap-frame"><div class="map-title">FIELD MAP <span>NORTH ↑</span></div><canvas id="minimap" width="160" height="160"></canvas><div class="map-legend"><i></i> YOU <i class="legend-cache"></i> CACHE <i class="legend-threat"></i> THREAT</div></div><div id="threat-indicator" class="threat-indicator"><span class="threat-bars"><i></i><i></i><i></i><i></i></span><span id="threat-label">QUIET… FOR NOW</span></div></section>
+    <div class="weapon-panel"><div class="weapon-icon" id="weapon-icon">⌁</div><div class="weapon-copy"><small>FIELD WEAPON <span id="weapon-slot">01</span></small><b id="weapon-name">SERVICE PISTOL</b></div><div class="ammo"><strong id="ammo-count">12</strong><span>/ <i id="reserve-count">48</i></span></div><div class="reload-track"><i id="reload-fill"></i></div><button id="switch-btn" class="switch-btn">SWAP <span>Q</span></button></div>
+    <div id="toast" class="toast" aria-live="polite"></div>
+    <div id="interact-hint" class="interact-hint">E &nbsp; SEARCH CACHE</div>
+    <div id="touch-controls" class="touch-controls" aria-label="Touch controls">
+      <div class="stick-zone move-zone"><div class="stick-ring"><div id="move-stick" class="stick-knob"></div></div><span>MOVE</span></div>
+      <div class="touch-actions"><button id="reload-touch" class="touch-action">↻<small>RELOAD</small></button><button id="swap-touch" class="touch-action">⇄<small>SWAP</small></button><div class="stick-zone aim-zone"><div class="stick-ring"><div id="aim-stick" class="stick-knob"></div></div><span>AIM</span></div></div>
+      <button id="fire-touch" class="fire-button"><span>✦</span><small>FIRE</small></button>
+    </div>
+    <div id="overlay" class="overlay">
+      <div class="overlay-card" id="overlay-card">
+        <div class="overlay-kicker"><span class="live-dot"></span> FIELD RECORDING  //  DAY 19</div>
+        <div class="hero-title">THE ROAD<br><em>DOESN’T</em> END.</div>
+        <p class="hero-copy">The old world is gone. The infected own the highways. One last run through the Cascade, one signal that might still mean something.</p>
+        <div class="story-quote"><span>“</span><div><p>Three supply caches. The ranger station. Then we ride.</p><small>— RAE, SURVIVOR RADIO LOG</small></div></div>
+        <button id="start-btn" class="primary-btn">BEGIN YOUR RUN <span>→</span></button>
+        <div class="controls-note"><span>WASD</span> MOVE <i>·</i> <span>MOUSE</span> AIM & FIRE <i>·</i> <span>R</span> RELOAD <i>·</i> <span>Q</span> SWITCH</div>
+        <div class="mobile-note">LEFT THUMB MOVE <i>·</i> RIGHT THUMB AIM & FIRE</div>
+      </div>
+      <div id="end-card" class="end-card hidden"><div class="overlay-kicker">CASCADE QUARANTINE ZONE</div><h2 id="end-title">RUN COMPLETE</h2><p id="end-copy"></p><button id="retry-btn" class="primary-btn">RUN IT AGAIN <span>↻</span></button></div>
+    </div>
+    <div id="pause-overlay" class="pause-overlay hidden"><div class="pause-card"><small>FIELD PAUSED</small><h2>CATCH YOUR BREATH.</h2><button id="resume-btn" class="primary-btn">BACK TO THE ROAD <span>→</span></button></div></div>
+    <div class="screen-grain"></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
