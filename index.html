@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#101611">
+  <title>Ashfall: Last Signal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game" aria-label="Ashfall: Last Signal survival game"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">A</span><span>ASHFALL <small>LAST SIGNAL</small></span></div>
+      <div class="mission-card"><span class="eyebrow">CURRENT OBJECTIVE</span><strong id="objective">Reach the old relay station</strong><span class="mission-sub" id="mission-sub">A voice is still out there. Find the source.</span></div>
+      <div class="top-right"><div class="day-tag"><i></i> DAY 19 <span>·</span> 18:42</div><button id="pause-btn" class="icon-btn" aria-label="Pause">Ⅱ</button></div>
+    </header>
+    <section class="left-hud">
+      <div class="status-card"><div class="status-head"><span>SURVIVOR</span><span id="health-value">100%</span></div><div class="meter"><i id="health-bar"></i></div><div class="status-bottom"><span>STAMINA</span><div class="meter stamina"><i id="stamina-bar"></i></div></div></div>
+      <div class="radio-card"><span class="radio-icon">⌁</span><div><small>RADIO SIGNAL</small><strong id="signal-text">WEAK · 1.2 KM</strong></div><div class="signal-bars"><i></i><i></i><i></i><i></i></div></div>
+    </section>
+    <section class="right-hud">
+      <div class="mini-map"><canvas id="map" width="148" height="148"></canvas><span class="map-label">PINE RIDGE</span><span class="map-dot"></span></div>
+      <div class="threat-pill"><span class="pulse"></span><span id="threat-text">THE DEAD ARE LISTENING</span></div>
+    </section>
+    <div id="toast" class="toast"></div>
+    <div class="bottom-hud">
+      <div class="weapon-block"><div class="weapon-glyph" id="weapon-glyph">⌁</div><div><span class="eyebrow" id="weapon-type">SIDEARM · 9MM</span><strong id="weapon-name">M9 FIELD PISTOL</strong></div><div class="weapon-key">Q <small>SWAP</small></div></div>
+      <div class="ammo-block"><span id="ammo-current">12</span><i>/</i><span id="ammo-reserve">48</span><div class="ammo-caption">AMMO <span>R · RELOAD</span></div></div>
+      <div class="hint-block"><span class="keycap">WASD</span> MOVE <span class="hint-sep">·</span> <span class="keycap">MOUSE</span> AIM & FIRE <span class="hint-sep">·</span> <span class="keycap">SHIFT</span> SPRINT</div>
+    </div>
+    <div class="mobile-controls" aria-label="Touch controls">
+      <div class="stick-zone" id="stick-zone"><div class="stick-base"><div class="stick-knob" id="stick-knob"></div></div><span>MOVE</span></div>
+      <div class="touch-actions"><button id="fire-touch" class="fire-touch"><span>✦</span><small>FIRE</small></button><button id="reload-touch" class="action-touch">↻<small>RELOAD</small></button><button id="swap-touch" class="action-touch">⇄<small>SWAP</small></button><button id="sprint-touch" class="action-touch">»<small>SPRINT</small></button></div>
+    </div>
+    <div class="overlay" id="start-screen">
+      <div class="intro-card"><div class="intro-kicker"><span class="kicker-line"></span> A SURVIVAL STORY <span class="kicker-line"></span></div><div class="intro-title">ASH<span>FALL</span></div><div class="intro-subtitle">THE WORLD WENT QUIET.<br><em>THE DEAD DIDN'T.</em></div><div class="story-rule"></div><p>Three nights ago, a voice cut through the static. Someone at Pine Ridge relay is still alive. The highway is crawling. You have one magazine and a long way to go.</p><button id="start-btn" class="primary-btn">BEGIN THE JOURNEY <span>→</span></button><div class="start-note">WASD / ARROWS TO MOVE · MOUSE TO AIM · SURVIVE</div></div>
+    </div>
+    <div class="overlay hidden" id="pause-screen"><div class="small-dialog"><span class="eyebrow">TAKE A BREATH</span><h2>PAUSED</h2><p>The silence never lasts.</p><button id="resume-btn" class="primary-btn">BACK TO THE ROAD <span>→</span></button></div></div>
+    <div class="overlay hidden" id="end-screen"><div class="small-dialog"><span class="eyebrow" id="end-kicker">PINE RIDGE RELAY</span><h2 id="end-title">SIGNAL FOUND</h2><p id="end-copy">You made it through the dark.</p><button id="restart-btn" class="primary-btn">PLAY AGAIN <span>↻</span></button></div></div>
+    <div id="journal" class="journal hidden"><span>FIELD RECORDING · 01</span><strong>“If anyone can hear this... we’re at the relay. The gate won’t hold much longer.”</strong><button id="journal-close">CONTINUE →</button></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
